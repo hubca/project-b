@@ -1,8 +1,5 @@
 package controllers
 
-import scala.collection.immutable.HashMap
-import scala.collection.mutable
-
 /**
   * Created by sambo on 10/05/2017.
   */
@@ -12,8 +9,9 @@ object testBoardrs {
 
     val uLoc = Array(51.468125, -0.127886)
     val rLoc = Array(45.955767, 6.885117)
-
-    println(getDistance(uLoc, rLoc))
+    val dist = getDistance(haversineMethod, uLoc, rLoc)
+    println(roundSmart(dist))
+    //println(roundSmart(7.9121))
   }
 
 //  def testCollections1: Boolean = Vector(1, 2, 3) == Range(1, 2, 3)
@@ -21,7 +19,9 @@ object testBoardrs {
 
   def rad(x: Double):Double = x * (scala.math.Pi / 180)
 
-  def getDistance(uLoc: Array[Double], rLoc: Array[Double]): Double = {
+  def getDistance(f: (Array[Double], Array[Double]) => Double, uLoc: Array[Double], rLoc: Array[Double]): Double = f(uLoc, rLoc)
+
+  def haversineMethod(uLoc: Array[Double], rLoc: Array[Double]): Double = {
     val r = 6378137// Earth’s mean radius in metres
     val dLat = rad(uLoc(0) - rLoc(0))
     val dLong = rad(uLoc(1) - rLoc(1))
@@ -34,12 +34,19 @@ object testBoardrs {
     d/1600// in miles // scala.math.round(d/1600);
   }
 
+  def roundBy(num: Double, dp: Int): String = s"%1.${dp}f".format(num)
+
+  def roundSmart(num: Double): String = num match {
+    case num if num < 1 => roundBy(num, 2)
+    case num if num < 10 => roundBy(num, 1)
+    case _ => roundBy(num, 0)
+  }
   /*
   RESORT DATA
     STATIC
     + rId : Int // unique ID of the resort
     + rName : String // name of the resort
-  	+ rCountryCode : String (3 char) // country code of the resort
+  	+ rCountryCode : String (2 char) // country code of the resort
   	+ rCountry : String // country of the resort
 	  + rLatLongLst : Collection (List?) // latitude, longitude of the resort
   	+ rAreaSize_km2 : Double // boardable size of the resort in km2
@@ -50,8 +57,8 @@ object testBoardrs {
     + rAvgAnnualVisitors : Double : db updated annually  // average annual visitors to the resort
 
       DATE DEPENDANT
-      + lastDateOpenClosedLst : Collection (List?) : db updated daily // last open, closed date of resort
-      + nextDateOpenClosedLst : Collection (List?) : db updated daily // next open, closed date of resort
+      + rLastDateOpenClosedLst : Collection (List?) : db updated daily // last open, closed date of resort
+      + rNextDateOpenClosedLst : Collection (List?) : db updated daily // next open, closed date of resort
       + rWeatherMap : Map : db added daily // collection of weather attributes of resort
             + rWmIcon : String // icon (html/url?) representing expected weather of resort
             + rWmSummary : String // short summary of expected weather of resort
@@ -77,6 +84,7 @@ object testBoardrs {
 	  + uLatLongLst: static : Collection (List?)
 	  + uDistanceMetric : static : String
 	  + uCurrencyHtml : static : String
+	  + uCurrencyDp : static : Int
 
 	  DEMOGRAPHIC DEPENDANT
 	  +
