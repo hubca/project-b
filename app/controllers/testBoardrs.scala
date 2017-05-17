@@ -7,7 +7,7 @@ package controllers
 // TODO - determine database
 case class ResortStatic(id: Int, name: String, countryCode: String, country: String, latLongLst: List[Double], areaSize_km2: Double, nearestIata: String)
 //case class Resort(surname: String, static: Map[String, ResortStatic])
-case class Resort(surname: String, static: ResortStatic)
+case class Resort(static: ResortStatic)
 
 //case class Resort[A](sMap: Map[String, ResortStatic])
 //case class Person(name: String, age: Int)
@@ -19,7 +19,7 @@ object testBoardrs {
     //val person1 = Person("Samuel", 36)
     val resortStatic1 = ResortStatic(1, "Chamonix", "FRA", "France", List(50.114929, -122.948626), 18.2, "GVA")
 
-    val resort1 = Resort("Brooks", resortStatic1)
+    val resort1 = Resort(resortStatic1)
     println(resort1.static.latLongLst(1))
     //val resort1 = Resort(sMap)
 
