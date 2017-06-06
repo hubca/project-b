@@ -7,17 +7,18 @@ GET     /                           controllers.HomeController.index
 
 # A custom-made Controller with two asynchronous modules
 GET     /home2                      controllers.AsyncHomeController.index
-GET     /enum                       controllers.Enum.index
-GET     /stream                     controllers.Enum.inf
-GET     /stream2                    controllers.Enum.inf2
-GET     /stream3                    controllers.Enum.inf3
+
+GET     /singleFuture               controllers.Stream.singleFuture
+GET     /singleStream               controllers.Stream.singleStream
+GET     /twoSingles                 controllers.Stream.twoSingles
+GET     /twoFutures                 controllers.Stream.twoFutures
 
 # An example controller showing how to write asynchronous code
 GET     /async1                     controllers.AsyncController.index
 GET     /async2                     controllers.Async2Controller.index
 
 # A mock controller showing action composition
-GET     /mock/:serviceName               controllers.Mock.mock(serviceName: String)
+GET     /mock/:serviceName          controllers.Mock.mock(serviceName: String)
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

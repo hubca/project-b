@@ -18,9 +18,14 @@ object testBoardrs {
 
     //val person1 = Person("Samuel", 36)
     val resortStatic1 = ResortStatic(1, "Chamonix", "FRA", "France", List(50.114929, -122.948626), 18.2, "GVA")
+    val noResortStatic1 = Seq(1, 2, 3)
 
     val resort1 = Resort(resortStatic1)
-    println(resort1.static.latLongLst(1))
+
+    val list1 = List("charcoal", "gas", "oil", "fumes")
+    val strMap = list1.map(str => Option(s"$str 2"))
+
+    println(strMap)//resort1.static.latLongLst(1))
     //val resort1 = Resort(sMap)
 
     /*
@@ -37,6 +42,18 @@ object testBoardrs {
     */
     //printDistance
     //println(roundSmart(7.9121))
+  }
+
+  private def testPatternMatch1(resortStatic: ResortStatic): String = resortStatic match {
+    case ResortStatic(a, b, c, d, e::f, g, h) =>  s"it is a real"
+    case _ => s"it is a fake"
+  }
+
+  private def testPatternMatch1(string: String) = string match {
+    //case "cancer" =>  Some[string]
+    case "aids" =>  List("first", string)
+    case "cancer" =>  Some("He'll live.. for a while.. about a day")
+    case _ => s"faking it"
   }
 
   def printDistance: Unit = {

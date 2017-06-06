@@ -16,7 +16,8 @@ class AsyncController @Inject() (sc: ServiceClient)(actorSystem: ActorSystem)(im
     for {
       async1Message <- asy1
     } yield {
-      Ok(views.html.async1.async1(async1Message))
+      //Ok(views.html.async1.async1(async1Message))
+      Ok(async1Message)
     }
   }
 
