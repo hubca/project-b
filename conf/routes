@@ -6,16 +6,19 @@
 GET     /                           controllers.HomeController.index
 
 # A custom-made Controller with two asynchronous modules
-GET     /home2                      controllers.AsyncHomeController.index
+GET     /twoAsyncs                  controllers.AsyncHomeController.index
 
-GET     /singleFuture               controllers.Stream.singleFuture
+# various streams
+GET     /singleString               controllers.Stream.singleString
 GET     /singleStream               controllers.Stream.singleStream
 GET     /twoSingles                 controllers.Stream.twoSingles
 GET     /twoFutures                 controllers.Stream.twoFutures
+GET     /oneHtmlFuture              controllers.Stream.oneHtmlFuture
+GET     /twoHtmlFutures1            controllers.Stream.twoHtmlFutures1
 
 # An example controller showing how to write asynchronous code
-GET     /async1                     controllers.AsyncController.index
-GET     /async2                     controllers.Async2Controller.index
+GET     /async1                     controllers.AsyncController.index(embed: Boolean = false)
+GET     /async2                     controllers.Async2Controller.index(embed: Boolean = false)
 
 # A mock controller showing action composition
 GET     /mock/:serviceName          controllers.Mock.mock(serviceName: String)

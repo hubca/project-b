@@ -11,8 +11,8 @@ class AsyncHomeController @Inject() (as1: AsyncController)(as2: Async2Controller
 
   def index = Action.async { request =>
 
-    val asy1 = as1.index(request)
-    val asy2 = as2.index(request)
+    val asy1 = as1.index(embed = false)(request)
+    val asy2 = as2.index(embed = false)(request)
 
     for {
       async1Result <- asy1

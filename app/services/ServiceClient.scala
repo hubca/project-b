@@ -11,7 +11,6 @@ import play.api.libs.concurrent.Execution.Implicits._
 class ServiceClient @Inject() (ws: WSClient) {
 
   def makeServiceCall(serviceName: String): Future[String] = {
-    // TODO find out about what .get().map(_.body) does here
     ws.url(s"http://localhost:9000/mock/$serviceName").get().map(_.body)
   }
 

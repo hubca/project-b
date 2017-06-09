@@ -12,8 +12,8 @@ class Mock @Inject() (actorSystem: ActorSystem)(implicit exec: ExecutionContext)
 
   def mock(serviceName: String) = Action.async { request =>
     serviceName match {
-      case "async1" => respond("asy1", 0.second)
-      case "async2" => respond("asy2", 4.second)
+      case "async1" => respond("asy11", 0.second)
+      case "async2" => respond("asy2", 3.second)
       case "async3" => respond("asy3", 5.second)
       case "stream" => stream("stream me", 500.millisecond)
       case "stream2" => stream("feed you", 2000.millisecond)
