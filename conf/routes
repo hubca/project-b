@@ -4,10 +4,34 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+
+# A custom-made Controller with two asynchronous modules
+GET     /twoAsyncs                  controllers.AsyncHomeController.index(embed: Boolean = false)
+
+# various stream tests
+GET     /singleString               controllers.Stream.singleString
+GET     /singleStream               controllers.Stream.singleStream
+GET     /doubleStream               controllers.Stream.doubleStream
+GET     /twoSingles                 controllers.Stream.twoSingles
+GET     /twoFutures                 controllers.Stream.twoFutures
+GET     /oneHtmlFuture              controllers.Stream.oneHtmlFuture
+GET     /twoHtmlFutures1            controllers.Stream.twoHtmlFutures1
+GET     /twoHtmlFutures2            controllers.Stream.twoHtmlFutures2
+GET     /twoHtmlFutures3            controllers.Stream.twoHtmlFutures3
+GET     /threeHtmlFutures1          controllers.Stream.threeHtmlFutures1
+
+# JSON tests
+POST    /sayHello                   controllers.JsonController.sayHello
+
+# Example controllers with asynchronous code
+GET     /async1                     controllers.AsyncController.index(embed: Boolean = false)
+GET     /async2                     controllers.Async2Controller.index(embed: Boolean = false)
+GET     /async3                     controllers.Async3Controller.index(embed: Boolean = false)
+
+# A mock controller showing action composition
+GET     /mock/:serviceName          controllers.Mock.mock(serviceName: String)
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
-# An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
-
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

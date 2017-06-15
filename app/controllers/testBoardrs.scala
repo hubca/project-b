@@ -15,13 +15,22 @@ case class Resort(static: ResortStatic)
 object testBoardrs {
 
   def main(args: Array[String]): Unit = {
+    /*
+        //val person1 = Person("Samuel", 36)
+        val resortStatic1 = ResortStatic(1, "Chamonix", "FRA", "France", List(50.114929, -122.948626), 18.2, "GVA")
+        val noResortStatic1 = Seq(1, 2, 3)//.foldLeft()
 
-    //val person1 = Person("Samuel", 36)
-    val resortStatic1 = ResortStatic(1, "Chamonix", "FRA", "France", List(50.114929, -122.948626), 18.2, "GVA")
+        val resort1 = Resort(resortStatic1)
 
-    val resort1 = Resort(resortStatic1)
-    println(resort1.static.latLongLst(1))
-    //val resort1 = Resort(sMap)
+        val list1 = List(5, 5, 11, 47)
+        //val strMap = list1.map(x => s"${(x + 5).toString} is right")
+        val strMap = list1.fold(0)((x,y) => x + y)
+
+        println(strMap)//resort1.static.latLongLst(1))
+
+    */
+
+    println("car")
 
     /*
 
@@ -37,6 +46,18 @@ object testBoardrs {
     */
     //printDistance
     //println(roundSmart(7.9121))
+  }
+
+  private def testPatternMatch1(resortStatic: ResortStatic): String = resortStatic match {
+    case ResortStatic(a, b, c, d, e::f, g, h) =>  s"it is a real"
+    case _ => s"it is a fake"
+  }
+
+  private def testPatternMatch1(string: String) = string match {
+    //case "cancer" =>  Some[string]
+    case "aids" =>  List("first", string)
+    case "cancer" =>  Some("He'll live.. for a while.. about a day")
+    case _ => s"faking it"
   }
 
   def printDistance: Unit = {
@@ -58,8 +79,8 @@ object testBoardrs {
     val dLat = rad(uLoc(0) - rLoc(0))
     val dLong = rad(uLoc(1) - rLoc(1))
     val a = scala.math.sin(dLat / 2) * scala.math.sin(dLat / 2) +
-            scala.math.cos(rad(uLoc(0))) * scala.math.cos(rad(rLoc(0))) *
-            scala.math.sin(dLong / 2) * scala.math.sin(dLong / 2)
+      scala.math.cos(rad(uLoc(0))) * scala.math.cos(rad(rLoc(0))) *
+        scala.math.sin(dLong / 2) * scala.math.sin(dLong / 2)
     val c = 2 * scala.math.atan2(scala.math.sqrt(a), scala.math.sqrt(1 - a))
     val d = r * c
     d/1000// in km
