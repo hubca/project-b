@@ -23,7 +23,6 @@ import play.api.libs.json.JsError.toFlatJson
 /**
   * Created by sambo on 06/06/2017.
   */
-case class Person(name: String, age: Int)
 
 class Stream @Inject() (as1: AsyncController)(as2: Async2Controller)(as3: Async3Controller)(sc: ServiceClient)(actorSystem: ActorSystem)(implicit mat: Materializer, ec: ExecutionContext) extends Controller {
 

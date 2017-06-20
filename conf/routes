@@ -21,7 +21,8 @@ GET     /twoHtmlFutures3            controllers.Stream.twoHtmlFutures3
 GET     /threeHtmlFutures1          controllers.Stream.threeHtmlFutures1
 
 # JSON tests
-POST    /sayHello                   controllers.JsonController.sayHello
+POST   /postJson                    controllers.JsonController.postJson
+GET    /readJson                    controllers.JsonController.readJson
 
 # Example controllers with asynchronous code
 GET     /async1                     controllers.AsyncController.index(embed: Boolean = false)

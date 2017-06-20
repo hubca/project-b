@@ -11,7 +11,4 @@ object Pagelet {
     result.body.consumeData.map(byteString => Html(codec.decode(byteString)))
   }
 
-  def readBody2(result: Result)(implicit mat: Materializer, codec: Codec, ec: ExecutionContext): Future[String] = {
-    result.body.consumeData.map(byteString => byteString.toString())
-  }
 }

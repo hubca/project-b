@@ -30,7 +30,7 @@ object testBoardrs {
 
     */
 
-    println("car")
+    println("I'm a Boardr but I'm fuckin' shite..")
 
     /*
 

@@ -1,0 +1,18 @@
+@(sunInfo: models.SunInfo)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @* Here's where we render the page title `String`. *@
+    <title>A nice title</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+    <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Sun's Out; Guns Out</h1>
+
+        <div>Sunrise time: @sunInfo.results.sunrise</div>
+        <div>Sunset time: @sunInfo.results.sunset</div>
+    </body>
+</html>
